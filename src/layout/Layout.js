@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
-import { LanguageContextConsumer } from '../context/LanguageContext';
+import { RootContextConsumer } from '../context/RootContext';
 
 
 class Layout extends Component {
@@ -12,7 +12,7 @@ class Layout extends Component {
         return (
             <div className="layout">
                 <header className='layout__header'>
-                    <LanguageContextConsumer>
+                    <RootContextConsumer>
                         {(context) => {
                             if (context.language === 'IND') {
                                 return (< div >
@@ -25,7 +25,7 @@ class Layout extends Component {
                                 </div>)
                             }
                         }}
-                    </LanguageContextConsumer>
+                    </RootContextConsumer>
                 </header>
                 <main>
                     {this.props.children}

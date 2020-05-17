@@ -1,23 +1,26 @@
 import React, { Component } from "react";
-import { LanguageContextConsumer } from '../context/LanguageContext';
-import { ThemeContext } from '../context/ThemeContext'
+import { RootContextConsumer } from '../context/RootContext';
+import { RootContext } from '../context/RootContext'
 
 export default class Home extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
 	}
+	static contextType = RootContext;
 
-	static contextType = ThemeContext;
 
 	render() {
+		const { theme } = this.context
+
 		return (
-			<LanguageContextConsumer>
+			<RootContextConsumer>
 				{(context) => {
 					if (context.language === 'IND') {
 						return (< div >
 							<h1>Ini Judul</h1>
 							<span>ini paragraf</span>
+							<div>{theme}</div>
 
 						</div>)
 					} else {
@@ -27,7 +30,7 @@ export default class Home extends Component {
 						</div>)
 					}
 				}}
-			</LanguageContextConsumer>
+			</RootContextConsumer>
 		)
 	}
 }
